@@ -1,0 +1,22 @@
+<h1>This is a Client</h1>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+function func(){
+	$.ajax({
+	url : "https://farmbuddy-server.herokuapp/restapi/farmerdetail/",
+	type : 'POST',
+	dataType: 'json',
+	data : {'username' : 'Ramesh Pal', "csrfmiddlewaretoken" : '{{ csrf_token }}' },
+	success: function(data)
+	{
+		console.log(data);
+		$('#request').html(data.farmer_detail);
+	},
+	error: function(textStatus, errorThrown){
+		alert('failed');
+	}
+});
+}
+</script>
+<button onclick="func()">hello</button>
+<div id='request'></div>
